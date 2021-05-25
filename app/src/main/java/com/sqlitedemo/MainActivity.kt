@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -40,19 +41,19 @@ private  lateinit var binding: ActivityMainBinding
 
         if (getItemsList().size > 0) {
 
-            binding.root.findViewById<RecyclerView>(R.id.rvItemsList).visibility = View.VISIBLE
-            tvNoRecordsAvailable.visibility = View.GONE
+            this.binding.root.findViewById<RecyclerView>(R.id.rvItemsList).visibility = View.VISIBLE
+            binding.root.findViewById<TextView>(R.id.tvNoRecordsAvailable).visibility = View.GONE
 
             // Set the LayoutManager that this RecyclerView will use.
-            rvItemsList.layoutManager = LinearLayoutManager(this)
+            binding.root.findViewById<RecyclerView>(R.id.rvItemsList).layoutManager = LinearLayoutManager(this)
             // Adapter class is initialized and list is passed in the param.
             val itemAdapter = ItemAdapter(this, getItemsList())
             // adapter instance is set to the recyclerview to inflate the items.
-            rvItemsList.adapter = itemAdapter
+            binding.root.findViewById<RecyclerView>(R.id.rvItemsList).adapter = itemAdapter
         } else {
 
-            rvItemsList.visibility = View.GONE
-            tvNoRecordsAvailable.visibility = View.VISIBLE
+            binding.root.findViewById<RecyclerView>(R.id.rvItemsList).visibility = View.GONE
+            binding.root.findViewById<TextView>(R.id.tvNoRecordsAvailable).visibility = View.VISIBLE
         }
     }
 
