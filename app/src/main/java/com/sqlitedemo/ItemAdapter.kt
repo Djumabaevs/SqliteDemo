@@ -10,7 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.items_row.view.*
 
 class ItemAdapter(val context: Context, val items: ArrayList<EmpModelClass>) :
     RecyclerView.Adapter<ItemAdapter.ViewHolder>() {

@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sqlitedemo.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.dialog_update.*
+
 
 class MainActivity : AppCompatActivity() {
 private  lateinit var binding: ActivityMainBinding
@@ -22,9 +22,10 @@ private  lateinit var binding: ActivityMainBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         setSupportActionBar(binding.toolbar)
 
-     btnAdd.setOnClickListener { view ->
+        binding.root.findViewById<Button>(R.id.btnAdd).setOnClickListener { view ->
 
             addRecord(view)
         }
@@ -39,7 +40,7 @@ private  lateinit var binding: ActivityMainBinding
 
         if (getItemsList().size > 0) {
 
-            rvItemsList.visibility = View.VISIBLE
+            binding.root.findViewById<RecyclerView>(R.id.rvItemsList).visibility = View.VISIBLE
             tvNoRecordsAvailable.visibility = View.GONE
 
             // Set the LayoutManager that this RecyclerView will use.
