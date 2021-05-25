@@ -4,6 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -84,10 +87,10 @@ class ItemAdapter(val context: Context, val items: ArrayList<EmpModelClass>) :
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Holds the TextView that will add each item to
-        val llMain = view.llMain
-        val tvName = view.tvName
-        val tvEmail = view.tvEmail
-        val ivEdit = view.ivEdit
-        val ivDelete = view.ivDelete
+        val llMain: LinearLayout = view.findViewById(R.id.llMain)
+        val tvName: TextView = view.findViewById(R.id.tvName)
+        val tvEmail: TextView = view.findViewById(R.id.tvEmail)
+        val ivEdit: ImageView = view.findViewById(R.id.ivEdit)
+        val ivDelete: ImageView = view.findViewById(R.id.ivDelete)
     }
 }
