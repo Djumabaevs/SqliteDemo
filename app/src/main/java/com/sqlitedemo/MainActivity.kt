@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -71,16 +72,16 @@ private  lateinit var binding: ActivityMainBinding
 
     //method for saving records in database
     fun addRecord(view: View) {
-        val name = etName.text.toString()
-        val email = etEmailId.text.toString()
+        val name =  binding.root.findViewById<EditText>(R.id.etName).text.toString()
+        val email =  binding.root.findViewById<EditText>(R.id.etEmailId).text.toString()
         val databaseHandler: DatabaseHandler = DatabaseHandler(this)
         if (!name.isEmpty() && !email.isEmpty()) {
             val status =
                 databaseHandler.addEmployee(EmpModelClass(0, name, email))
             if (status > -1) {
                 Toast.makeText(applicationContext, "Record saved", Toast.LENGTH_LONG).show()
-                etName.text.clear()
-                etEmailId.text.clear()
+                binding.root.findViewById<EditText>(R.id.etName).text.clear()
+                binding.root.findViewById<EditText>(R.id.etEmailId).text.clear()
 
                 setupListofDataIntoRecyclerView()
             }
@@ -103,13 +104,13 @@ private  lateinit var binding: ActivityMainBinding
          The resource will be inflated, adding all top-level views to the screen.*/
         updateDialog.setContentView(R.layout.dialog_update)
 
-        updateDialog.etUpdateName.setText(empModelClass.name)
-        updateDialog.etUpdateEmailId.setText(empModelClass.email)
+        updateDialog.findViewById<EditText>(R.id.etUpdateName).setText(empModelClass.name)
+        updateDialog.findViewById<EditText>(R.id.etUpdateEmailId).setText(empModelClass.email)
 
-        updateDialog.tvUpdate.setOnClickListener(View.OnClickListener {
+        updateDialog.findViewById<TextView>(R.id.tvUpdate).setOnClickListener(View.OnClickListener {
 
-            val name = updateDialog.etUpdateName.text.toString()
-            val email = updateDialog.etUpdateEmailId.text.toString()
+            val name = updateDialog.findViewById<EditText>(R.id.etUpdateName).text.toString()
+            val email = updateDialog.findViewById<EditText>(R.id.etUpdateEmailId).text.toString()
 
             val databaseHandler: DatabaseHandler = DatabaseHandler(this)
 
@@ -131,7 +132,7 @@ private  lateinit var binding: ActivityMainBinding
                 ).show()
             }
         })
-        updateDialog.tvCancel.setOnClickListener(View.OnClickListener {
+        updateDialog.findViewById<TextView>(R.id.tvCancel).setOnClickListener(View.OnClickListener {
             updateDialog.dismiss()
         })
         //Start the dialog and display it on screen.
